@@ -1,0 +1,31 @@
+{
+  "name": "koa_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiomara-masmela/koa_app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiomara-masmela/koa_app/issues"
+  },
+  "homepage": "https://github.com/xiomara-masmela/koa_app#readme",
+  "dependencies": {
+    "@koa/router": "^10.0.0",
+    "dotenv": "^14.3.2",
+    "knex": "^1.0.1",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "nodemon": "^2.0.15",
+    "path": "^0.12.7",
+    "pg": "^8.7.1"
+  }
+}
