@@ -1,27 +1,39 @@
-'use strict';
-
 const Koa = require('koa');
-const Router = require('@koa/router');
-
 const app = new Koa();
+const bodyPArser = require('koa-bodyparser');
+
+const Router = require('@koa/router');
 const router = new Router();
 
-router.get('koa-example', '/', (ctx) => {
+// app.use(bodyPArser());
+app.use(async (ctx, next) => {
+  try {
+    await next()
+  } catch(err) {
+    console.log(ctx.response.status)
+  }
+});
+
+
+router.get('koa-example', '/', (ctx, next) => {
   ctx.body = 'Hello this is working';
+  
 });
 
 router.get('error', '/error', (ctx) => {
-  ctx.throw(500, 'internal server error');
+  ctx.status = 500;
+  ctx.body = 'error';
 });
 
-router.get('status', '/status', (ctx) => {
-  ctx.status = 200;
-  ctx.body   = 'ok';
-})
+
+
+
+
 
 app
-  .use(router.routes())
+.use(router.routes())
+.use(router.allowedMethods());
   
 
-app.listen(1200);
+app.listen(1200, ()=> console.log('Server listening on port 1200'));
 
